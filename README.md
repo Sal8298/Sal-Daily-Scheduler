@@ -2,7 +2,7 @@
 ## Description
   - Motivation
 
-  Help me manage my time in a more efficent manner.
+  Help me manage my time in a more efficent manner by being able to create reminders for various daily tasks.
   
   - What you learnt?
 
@@ -19,10 +19,10 @@
   - [Questions](#Questions)
 
   ## Installation
-  * None
+  * None Required.
 
   ## Usage
-  * Go to link: 
+  * Go to link: https://sal8298.github.io/Sal-Daily-Scheduler/
   * Fill in an item and press save.
   * Open console to see local storage.
 

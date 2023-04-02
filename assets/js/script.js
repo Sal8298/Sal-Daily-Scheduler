@@ -3,11 +3,13 @@ console.log('Connected');
 var currentHour = dayjs().hour();
 var currentTimeDisplay = $('#time-display');
 
+//Display time
 function displayTime() {
     var dateFormat = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
     currentTimeDisplay.text(dateFormat);
 };
 
+// Changes textarea color depending on time of day.
 function colorCoordination() {
 
     $(".description").each(function () {
@@ -25,6 +27,7 @@ function colorCoordination() {
     });
 }
 
+// Get from local storage.
 function readPlannerFromStorage() {
     var planner = localStorage.getItem('planner');
     if (planner) {
@@ -35,6 +38,7 @@ function readPlannerFromStorage() {
     return planner;
 }
 
+// Save to local storage.
 function savePlannerToStorage(planner) {
 localStorage.setItem('planner', JSON.stringify(planner));
 }
@@ -53,6 +57,7 @@ $('.saveBtn').on('click', function() {
     savePlannerToStorage(planner)
 });
 
+// Clear local storage.
 $("#clearPlanner").on("click", function () {
     localStorage.clear();
 })
