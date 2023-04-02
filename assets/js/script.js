@@ -53,14 +53,6 @@ $('.saveBtn').on('click', function() {
     savePlannerToStorage(planner)
 });
 
-function printData() {
-    var planner = readPlannerFromStorage();
-    for (let index = 0; index < planner.length; index+=1) {
-        const plan = planner[index];
-        $('.description').textContent = planner[i].plan;
-    }
-}
-
 $("#clearPlanner").on("click", function () {
     localStorage.clear();
 })
