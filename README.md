@@ -27,8 +27,8 @@
   * Open console to see local storage.
 
   - Here is a screenshot of the working app: 
-  
-  [Sal-Daily-Scheduler](./assets/images/Screen%20Shot%202023-04-02%20at%2012.55.48%20AM.png)
+
+(./assets/images/Screen%20Shot%202023-04-02%20at%2012.55.48%20AM.png)
 
 
   ## Credits
