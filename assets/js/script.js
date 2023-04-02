@@ -1,21 +1,4 @@
 console.log('Connected');
-//Global Vars
-var userData;
-var hour;
-
-// Timeblocks
-var nineAm = $('#9am');
-var tenAm = $('#10am');
-var elevenAm = $('#11am');
-var twelvePm = $('#12pm');
-var onePm = $('#1pm');
-var twoPm = $('#2pm');
-var threePm = $('#3pm');
-var fourPm = $('#4pm');
-var fivePm = $('#5pm');
-var sixPm = $('#6pm');
-var sevenPm = $('#7pm');
-
 //DayJs
 var currentHour = dayjs().hour();
 var currentTimeDisplay = $('#time-display');
@@ -25,26 +8,63 @@ function displayTime() {
     currentTimeDisplay.text(dateFormat);
 };
 
-$("#clearPlanner").on("click", function () {
-    localStorage.clear();
-})
-
 function colorCoordination() {
 
     $(".description").each(function () {
-        var currentTime = parseInt($(this).attr("id"));
+        var plannerTime = parseInt($(this).attr("id"));
         currentHour = parseInt(currentHour);
-        console.log(currentTime);
+        console.log(plannerTime);
         console.log(currentHour);
-        if (currentHour > currentTime) {
+        if (currentHour > plannerTime) {
             $(this).addClass("past");
-        } else if (currentHour < currentTime) {
+        } else if (currentHour < plannerTime) {
             $(this).addClass("future");
         } else {
             $(this).addClass("present");
         }
     });
 }
+
+function readPlannerFromStorage() {
+    var planner = localStorage.getItem('planner');
+    if (planner) {
+        planner = JSON.parse(planner);
+    } else {
+        planner = [];
+    }
+    return planner;
+}
+
+function savePlannerToStorage(planner) {
+localStorage.setItem('planner', JSON.stringify(planner));
+}
+
+$('.saveBtn').on('click', function() {
+    var text = $(this).siblings(".description").val().trim();
+    var plannerTime = $('.hour').text();
+    console.log(text);
+    var newPlan = {
+        id: plannerTime,
+        plan: text
+    }
+
+    var planner = readPlannerFromStorage();
+    planner.push(newPlan)
+    savePlannerToStorage(planner)
+});
+
+function printData() {
+    var planner = readPlannerFromStorage();
+    for (let index = 0; index < planner.length; index+=1) {
+        const plan = planner[index];
+        $('.description').textContent = planner[i].plan;
+    }
+}
+
+$("#clearPlanner").on("click", function () {
+    localStorage.clear();
+})
+
 
 displayTime();
 setInterval(displayTime, 1000);
