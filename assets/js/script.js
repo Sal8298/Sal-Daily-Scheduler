@@ -1,5 +1,9 @@
-// Timeblocks
 console.log('Connected');
+//Global Vars
+var userData;
+var hour;
+
+// Timeblocks
 var nineAm = $('#9am');
 var tenAm = $('#10am');
 var elevenAm = $('#11am');
@@ -19,7 +23,14 @@ var currentTimeDisplay = $('#time-display');
 function displayTime() {
     var dateFormat = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
     currentTimeDisplay.text(dateFormat);
-}
+};
+
+$("#clearDay").on("click", function(){
+    localStorage.clear();
+})
+
+
+
 
 
 displayTime();
