@@ -25,14 +25,28 @@ function displayTime() {
     currentTimeDisplay.text(dateFormat);
 };
 
-$("#clearDay").on("click", function(){
+$("#clearPlanner").on("click", function () {
     localStorage.clear();
 })
 
+function colorCoordination() {
 
-
-
+    $(".description").each(function () {
+        var currentTime = parseInt($(this).attr("id"));
+        currentHour = parseInt(currentHour);
+        console.log(currentTime);
+        console.log(currentHour);
+        if (currentHour > currentTime) {
+            $(this).addClass("past");
+        } else if (currentHour < currentTime) {
+            $(this).addClass("future");
+        } else {
+            $(this).addClass("present");
+        }
+    });
+}
 
 displayTime();
 setInterval(displayTime, 1000);
+colorCoordination();
 console.log('Connected');
